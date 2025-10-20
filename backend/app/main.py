@@ -2,27 +2,26 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
 
-app = FastAPI(title="Looper Backend")
+app = FastAPI(title="Looper API")
 
-# Model for a saved loop
+# In-memory storage for loops (for MVP)
+loops_db = []
+
 class Loop(BaseModel):
     user_id: str
     song_url: str
     start_time: float
     end_time: float
 
-# Temporary in-memory storage (later use MongoDB)
-loops_db: List[Loop] = []
-
 @app.get("/")
-def read_root():
+def home():
     return {"message": "Welcome to Looper API"}
 
 @app.post("/loops/")
 def create_loop(loop: Loop):
     loops_db.append(loop)
-    return {"message": "Loop saved successfully", "loop": loop}
+    return {"message": "Loop saved", "loop": loop}
 
-@app.get("/loops/")
+@app.get("/loops/", response_model=List[Loop])
 def get_loops():
     return loops_db

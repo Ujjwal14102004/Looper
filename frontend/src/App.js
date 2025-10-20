@@ -1,59 +1,72 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [songUrl, setSongUrl] = useState("");
   const [startTime, setStartTime] = useState(0);
-  const [endTime, setEndTime] = useState(30); // default 30 sec loop
+  const [endTime, setEndTime] = useState(30);
+  const [loops, setLoops] = useState([]);
 
-  const handlePlayLoop = () => {
-    const audio = new Audio(songUrl);
-    audio.currentTime = startTime;
-    audio.play();
+  // Fetch loops from backend
+  const fetchLoops = async () => {
+    const res = await fetch("http://127.0.0.1:8000/loops/");
+    const data = await res.json();
+    setLoops(data);
+  };
 
-    const loopInterval = setInterval(() => {
-      if (audio.currentTime >= endTime) {
-        audio.currentTime = startTime;
-      }
-    }, 500);
+  useEffect(() => {
+    fetchLoops();
+  }, []);
 
-    // Stop audio when page unloads
-    window.addEventListener("beforeunload", () => {
-      audio.pause();
-      clearInterval(loopInterval);
+  const saveLoop = async () => {
+    const res = await fetch("http://127.0.0.1:8000/loops/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_id: "testuser",
+        song_url: songUrl,
+        start_time: parseFloat(startTime),
+        end_time: parseFloat(endTime),
+      }),
     });
+    await res.json();
+    fetchLoops(); // refresh list
   };
 
   return (
-    <div style={{ padding: "2rem", fontFamily: "Arial" }}>
-      <h1>Looper 🎵</h1>
+    <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
+      <h1>Looper MVP</h1>
+
       <input
         type="text"
-        placeholder="Enter Spotify / Audio URL"
+        placeholder="Song URL"
         value={songUrl}
         onChange={(e) => setSongUrl(e.target.value)}
-        style={{ width: "300px", marginRight: "1rem" }}
       />
-      <button onClick={handlePlayLoop}>Play Loop</button>
-      <div style={{ marginTop: "1rem" }}>
-        <label>
-          Start Time (sec):{" "}
-          <input
-            type="number"
-            value={startTime}
-            onChange={(e) => setStartTime(Number(e.target.value))}
-          />
-        </label>
-        <label style={{ marginLeft: "1rem" }}>
-          End Time (sec):{" "}
-          <input
-            type="number"
-            value={endTime}
-            onChange={(e) => setEndTime(Number(e.target.value))}
-          />
-        </label>
-      </div>
+      <input
+        type="number"
+        placeholder="Start time (s)"
+        value={startTime}
+        onChange={(e) => setStartTime(e.target.value)}
+      />
+      <input
+        type="number"
+        placeholder="End time (s)"
+        value={endTime}
+        onChange={(e) => setEndTime(e.target.value)}
+      />
+      <button onClick={saveLoop}>Save Loop</button>
+
+      <h2>Saved Loops</h2>
+      <ul>
+        {loops.map((loop, idx) => (
+          <li key={idx}>
+            {loop.song_url} | {loop.start_time}s - {loop.end_time}s
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
 
 export default App;
+cd 
