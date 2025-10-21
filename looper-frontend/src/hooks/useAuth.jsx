@@ -1,13 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext.jsx";
 
-const useAuth = () => {
-    const [user, setUser] = useState(null);
-
-    useEffect(() => {
-        // Fetch user info from API or context
-    }, []);
-
-    return { user, setUser };
-};
-
-export default useAuth;
+export const useAuth = () => useContext(UserContext);

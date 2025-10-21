@@ -1,21 +1,24 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { UserContext } from "../context/UserContext.jsx";
 
-export default function Navbar() {
-  const { user, logout } = useContext(UserContext);
-
+const Navbar = () => {
   return (
-    <nav>
-      <Link to="/">Home</Link>
-      {user ? (
-        <>
-          <Link to="/dashboard">Dashboard</Link>
-          <button onClick={logout}>Logout</button>
-        </>
-      ) : (
-        <Link to="/login">Login</Link>
-      )}
+    <nav style={{ background: "#222", padding: "1rem" }}>
+      <ul
+        style={{
+          display: "flex",
+          gap: "1rem",
+          listStyle: "none",
+          margin: 0,
+          color: "white",
+        }}
+      >
+        <li><Link to="/" style={{ color: "white", textDecoration: "none" }}>Home</Link></li>
+        <li><Link to="/dashboard" style={{ color: "white", textDecoration: "none" }}>Dashboard</Link></li>
+        <li><Link to="/login" style={{ color: "white", textDecoration: "none" }}>Login</Link></li>
+      </ul>
     </nav>
   );
-}
+};
+
+export default Navbar;

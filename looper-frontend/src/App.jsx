@@ -1,15 +1,14 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import Router from "./router.jsx";
-import { UserProvider } from "./context/UserContext.jsx";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRouter from "./router";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <UserProvider>
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
-    </UserProvider>
+    <Router>
+      <Navbar />
+      <AppRouter />
+    </Router>
   );
 }
 

@@ -1,17 +1,12 @@
-import React, { useContext } from "react";
-import { UserContext } from "../context/UserContext.jsx";
-import Navbar from "../components/Navbar.jsx";
+import React from "react";
 
-export default function Dashboard() {
-  const { user } = useContext(UserContext);
-
-  if (!user) return <p>Please login first.</p>;
-
+const Dashboard = () => {
   return (
-    <>
-      <Navbar />
+    <div style={{ padding: "2rem" }}>
       <h1>Dashboard</h1>
-      <p>Welcome, {user.name}</p>
-    </>
+      <p>Here’s your activity overview.</p>
+    </div>
   );
-}
+};
+
+export default Dashboard;

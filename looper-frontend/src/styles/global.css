@@ -1,23 +1,6 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-  }
-  
-  nav {
-    display: flex;
-    gap: 10px;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-  }
-  
-  nav a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  button {
-    cursor: pointer;
-  }
-  
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}

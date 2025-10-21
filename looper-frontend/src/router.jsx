@@ -1,10 +1,10 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
-import Login from "./pages/Login.jsx";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
 
-export default function Router() {
+function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -13,3 +13,5 @@ export default function Router() {
     </Routes>
   );
 }
+
+export default AppRouter;

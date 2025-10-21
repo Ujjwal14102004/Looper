@@ -1,17 +1,12 @@
-import React, { useContext } from "react";
-import { UserContext } from "../context/UserContext.jsx";
+import React from "react";
 
-export default function Login() {
-  const { login } = useContext(UserContext);
-
-  const handleLogin = () => {
-    login({ name: "Ujjwal" }); // Dummy login
-  };
-
+const Login = () => {
   return (
-    <>
-      <h1>Login Page</h1>
-      <button onClick={handleLogin}>Login</button>
-    </>
+    <div style={{ padding: "2rem" }}>
+      <h1>Login</h1>
+      <p>Enter your credentials to continue.</p>
+    </div>
   );
-}
+};
+
+export default Login;

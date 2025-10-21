@@ -1,8 +1,9 @@
-import axios from "axios";
-
-const API_URL = "http://localhost:5000"; // backend URL
-
-export const loginUser = async (credentials) => {
-  const response = await axios.post(`${API_URL}/login`, credentials);
-  return response.data;
-};
+// Placeholder for future API calls
+export const fetchLoops = async () => {
+    // Replace with actual API call
+    return [
+      { id: 1, name: "Chill Beat", genre: "Lo-fi" },
+      { id: 2, name: "Funky Groove", genre: "Funk" },
+    ];
+  };
+  
