@@ -278,3 +278,107 @@ body {
     gap: 1rem;
   }
 }
+
+
+
+/* Dashboard Styles */
+.dashboard-header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #0a0a0a;
+  color: white;
+}
+
+.dashboard-header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  color: #00ffcc;
+}
+
+.dashboard-header p {
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.card {
+  background-color: #111;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 255, 204, 0.4);
+}
+
+.card h2 {
+  margin-bottom: 0.5rem;
+  color: #00ffcc;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.dashboard-footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #0b0b0b;
+  color: #666;
+  margin-top: 2rem;
+}
+
+
+/* Login page */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #333;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 300px;
+}
+
+.login-form input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-form button {
+  padding: 10px;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: #4338ca;
+}
