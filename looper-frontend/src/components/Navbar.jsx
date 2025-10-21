@@ -1,22 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../styles/global.css"; // make sure global.css exists
 
 const Navbar = () => {
   return (
-    <nav style={{ background: "#222", padding: "1rem" }}>
-      <ul
-        style={{
-          display: "flex",
-          gap: "1rem",
-          listStyle: "none",
-          margin: 0,
-          color: "white",
-        }}
-      >
-        <li><Link to="/" style={{ color: "white", textDecoration: "none" }}>Home</Link></li>
-        <li><Link to="/dashboard" style={{ color: "white", textDecoration: "none" }}>Dashboard</Link></li>
-        <li><Link to="/login" style={{ color: "white", textDecoration: "none" }}>Login</Link></li>
-      </ul>
+    <nav className="navbar">
+      <div className="navbar-logo">
+        <Link to="/" className="logo">Looper</Link>
+      </div>
+      <div className="navbar-links">
+        <Link to="/">Home</Link>
+        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/login">Login</Link>
+      </div>
     </nav>
   );
 };
